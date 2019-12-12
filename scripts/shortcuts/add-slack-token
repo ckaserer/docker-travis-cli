@@ -1,0 +1,6 @@
+#!/bin/bash
+
+readonly TOPLEVEL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && cd .. && pwd )
+for functionFile in ${TOPLEVEL_DIR}/functions/*.sh;do source ${functionFile}; done
+
+travis_encrypt "notifications.slack.rooms" "${1}"

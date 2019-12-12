@@ -1,3 +1,4 @@
 .travis/travis.sh
 .travis/config.yml
 .bash_history
+.DS_Store

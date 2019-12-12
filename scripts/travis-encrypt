@@ -1,0 +1,6 @@
+#!/bin/bash
+
+readonly SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )
+for functionFile in ${SCRIPT_DIR}/functions/*.sh;do source ${functionFile}; done
+
+travis_encrypt "${1}" "${2}"
