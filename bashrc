@@ -1,10 +1,8 @@
 #!/bin/bash
 
-readonly repo_home=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 # add-slack-token
 function add-slack-token () {
-  local command="docker run --rm -i -e TZ=Europe/Vienna -v ${repo_home}:/root -w=/root ckaserer/travis-cli add-slack-token"
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-slack-token"
   echo "+ ${command} $@" && ${command} $@
 }
 readonly -f add-slack-token
@@ -12,7 +10,7 @@ readonly -f add-slack-token
 
 # add-docker-credentials
 function add-docker-credentials () {
-  local command="docker run --rm -i -e TZ=Europe/Vienna -v ${repo_home}:/root -w=/root ckaserer/travis-cli add-docker-credentials"
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-docker-credentials"
   echo "+ ${command} $@" && ${command} $@
 }
 readonly -f add-docker-credentials
@@ -20,7 +18,7 @@ readonly -f add-docker-credentials
 
 # add-googlechat-webhook
 function add-googlechat-webhook () {
-  local command="docker run --rm -i -e TZ=Europe/Vienna -v ${repo_home}:/root -w=/root ckaserer/travis-cli add-googlechat-webhook"
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-googlechat-webhook"
   echo "+ ${command} $@" && ${command} $@
 }
 readonly -f add-googlechat-webhook
@@ -28,7 +26,7 @@ readonly -f add-googlechat-webhook
 
 # travis-encrypt
 function travis-encrypt () {
-  local command="docker run --rm -i -e TZ=Europe/Vienna -v ${repo_home}:/root -w=/root ckaserer/travis-cli travis-encrypt"
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli travis-encrypt"
   echo "+ ${command} $@" && ${command} $@
 }
 readonly -f travis-encrypt
