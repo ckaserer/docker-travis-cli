@@ -1,33 +1,47 @@
 #!/bin/bash
 
-# add-slack-token
-function add-slack-token () {
-  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-slack-token"
-  echo "+ ${command} $@" && ${command} $@
+readonly DOCKER_TRAVIS_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# docker-travis-build
+function docker-travis-build () {
+  local command="docker build -t ckaserer/travis-cli $@ ${DOCKER_TRAVIS_HOME}"
+  echo "+ ${command}" && ${command}
 }
-readonly -f add-slack-token
+readonly -f docker-travis-build
+[ "$?" -eq "0" ] || return $?
+
+# docker-travis-add-slack-token
+function docker-travis-add-slack-token () {
+  docker-travis "add-slack-token $@"
+}
+readonly -f docker-travis-add-slack-token
 [ "$?" -eq "0" ] || return $?
 
 # add-docker-credentials
-function add-docker-credentials () {
-  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-docker-credentials"
-  echo "+ ${command} $@" && ${command} $@
+function docker-travis-add-docker-credentials () {
+  docker-travis "add-docker-credentials $@"
 }
-readonly -f add-docker-credentials
+readonly -f docker-travis-add-docker-credentials
 [ "$?" -eq "0" ] || return $?
 
-# add-googlechat-webhook
-function add-googlechat-webhook () {
-  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-googlechat-webhook"
-  echo "+ ${command} $@" && ${command} $@
+# docker-travis-add-googlechat-webhook
+function docker-travis-add-googlechat-webhook () {
+  docker-travis "add-googlechat-webhook $@"
 }
-readonly -f add-googlechat-webhook
+readonly -f docker-travis-add-googlechat-webhook
 [ "$?" -eq "0" ] || return $?
 
-# travis-encrypt
-function travis-encrypt () {
-  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli travis-encrypt"
+# docker-travis-encrypt
+function docker-travis-encrypt () {
+  docker-travis "travis-encrypt $@"
+}
+readonly -f docker-travis-encrypt
+[ "$?" -eq "0" ] || return $?
+
+# docker-travis
+function docker-travis () {
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root ckaserer/travis-cli"
   echo "+ ${command} $@" && ${command} $@
 }
-readonly -f travis-encrypt
+readonly -f docker-travis
 [ "$?" -eq "0" ] || return $?

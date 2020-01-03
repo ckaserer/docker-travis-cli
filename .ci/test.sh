@@ -1,6 +1,8 @@
 #!/bin/bash
 
 source bashrc
-echo "password" | add-docker-credentials test
-add-googlechat-webhook test
-add-slack-token abc
+
+set -e
+docker-travis-build --no-cache
+docker-travis sh -c "command -v travis"
+set +e
