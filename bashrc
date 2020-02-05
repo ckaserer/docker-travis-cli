@@ -40,7 +40,7 @@ readonly -f docker-travis-encrypt
 
 # docker-travis
 function docker-travis () {
-  local command="docker run --rm -it -e TZ=Europe/Vienna -v $(pwd):/root ckaserer/travis-cli"
+  local command="docker run --rm -it -e TZ=Europe/Vienna -v ${HOME}/.travis:/root/.travis -v $(pwd):/root ckaserer/travis-cli"
   echo "+ ${command} $@" && ${command} $@
 }
 readonly -f docker-travis
