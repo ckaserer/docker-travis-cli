@@ -17,11 +17,11 @@ function docker-travis-add-slack-token () {
 readonly -f docker-travis-add-slack-token
 [ "$?" -eq "0" ] || return $?
 
-# add-docker-credentials
-function docker-travis-add-docker-credentials () {
+# add-container-registry-credentials
+function docker-travis-add-container-registry-credentials () {
   docker-travis "add-docker-credentials $@"
 }
-readonly -f docker-travis-add-docker-credentials
+readonly -f docker-travis-add-container-registry-credentials
 [ "$?" -eq "0" ] || return $?
 
 # docker-travis-add-googlechat-webhook

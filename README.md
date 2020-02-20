@@ -29,7 +29,7 @@ source bashrc
 ### Add Slack Token
 
 ```
-add-slack-token "workspace:myTokenString"
+docker-travis-add-slack-token "workspace:myTokenString"
 ```
 
 More information will be added in the future
@@ -39,7 +39,7 @@ More information will be added in the future
 ### Add Docker Credentials
 
 ```
-add-docker-credentials dockerUsername
+docker-travis-add-container-registry-credentials dockerUsername
 ```
 
 More information can be found here
@@ -51,7 +51,7 @@ More information can be found here
 ### Add Google Chat Webhook URL
 
 ```
-add-googlechat-webhook "url"
+docker-travis-add-googlechat-webhook "url"
 ```
 
 More information can be found here
