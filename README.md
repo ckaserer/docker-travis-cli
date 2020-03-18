@@ -13,7 +13,7 @@ Travis offers a cli to interact with their services. That's great! We can use it
 
 I am no fan of installing various packages with different package managers all over my workstation. I am a big fan of container technology however and use travis-ci for most of my projects on github.
 
-Since I am an outspoken advocate of container technology and use travis-ci for most of my projects on github I put travis' cli in a ruby based container. This container is available in two flavors, either with a fixed version or with the latest and greatest travis cli release.
+Since I am an outspoken advocate of container technology and use travis-ci for most of my projects on github I put travis' cli in a ruby based container. This container is available in two flavors, either with a fixed version or with the latest and greatest travis cli release. The source code is available on [github.com/ckaserer/docker-travis-cli](https://github.com/ckaserer/docker-travis-cli)
 
 If you need to read up on what travis cli can do for you, here is the link you seek
 * [https://github.com/travis-ci/travis.rb](https://github.com/travis-ci/travis.rb)
