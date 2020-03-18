@@ -26,8 +26,8 @@ deploy:
   provider: script
   script: bash bash-script-collection/container-image-push.sh \ 
     --image ckaserer/travis-cli \
-    --username ${DOCKER_USER} \
-    --password ${DOCKER_PASS}
+    --username ${REGISTRY_USER} \
+    --password ${REGISTRY_PASS}
   skip_cleanup: true
   on:
     branch: master
