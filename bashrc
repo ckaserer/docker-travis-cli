@@ -19,7 +19,7 @@ readonly -f docker-travis-add-slack-token
 
 # add-container-registry-credentials
 function docker-travis-add-container-registry-credentials () {
-  docker-travis "add-docker-credentials $@"
+  docker-travis "add-container-registry-credentials $@"
 }
 readonly -f docker-travis-add-container-registry-credentials
 [ "$?" -eq "0" ] || return $?
